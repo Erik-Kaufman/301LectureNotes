@@ -21,8 +21,21 @@ import org.sireum.justification.natded.prop._
           6 Assume( q ),
           7 ( q | p   ) by OrI1(6)
         ),
+        8 ( q | p ) by OrE(1, 2, 5)        2 SubProof(
+          3 Assume(p),
+          4 ( q | p ) by OrI2(3)
+
+          //goal: q | p
+        ),
+        //next, subproof with Q
+        5 SubProof(
+          6 Assume(q),
+          7 ( q | p ) by OrI1(6)
+
+          //goal: same conclusion (q | p)
+        ),
         8 ( q | p ) by OrE(1, 2, 5)
-        
+        //overall goal: q | p
     )
   )
 }
